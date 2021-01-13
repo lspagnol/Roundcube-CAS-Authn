@@ -331,7 +331,9 @@ class cas_authn extends rcube_plugin {
             }
 
 	    // SLO callback
-	    phpCAS::setPostAuthenticateCallback("handleCasLogin", $old_session);
+	    // Correction erreur:
+	    // "PHP Warning:  call_user_func_array() expects parameter 1 to be a valid callback, function 'handleCasLogin' not found or invalid function name in /usr/share/php/CAS/source/CAS/Client.php on line 1512"
+	    //phpCAS::setPostAuthenticateCallback("handleCasLogin", $old_session);
 	    phpCAS::setSingleSignoutCallback(array($this, "handleSingleLogout"));
 
             // set service URL for authorization with CAS server
